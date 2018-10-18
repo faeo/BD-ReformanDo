@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `reformando_banco`.`pessoas` (
   `idpessoas` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `apelido` VARCHAR(45) NULL,
-  `cpf` INT(11) NOT NULL,
+  `cpf` INT(12) NOT NULL,
   `endereco` VARCHAR(45) NOT NULL,
   `bairro` VARCHAR(45) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS `reformando_banco`.`profissionais` (
   `pessoas_idpessoas` INT NOT NULL,
   `profissao` VARCHAR(45) NOT NULL,
   `qualificacao` VARCHAR(45) NULL,
+  `avaliacoes` INT NULL,
+  `numaval` INT NULL,
   PRIMARY KEY (`idprofissionais`),
   INDEX `fk_profissionais_pessoas_idx` (`pessoas_idpessoas` ASC),
   CONSTRAINT `fk_profissionais_pessoas`
@@ -90,27 +92,6 @@ CREATE TABLE IF NOT EXISTS `reformando_banco`.`obras` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `reformando_banco`.`disparandoObras`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `reformando_banco`.`disparandoObras` (
-  `profissionais_idprofissionais` INT NOT NULL,
-  `obras_idobras` INT NOT NULL,
-  PRIMARY KEY (`profissionais_idprofissionais`, `obras_idobras`),
-  INDEX `fk_profissionais_has_obras_obras1_idx` (`obras_idobras` ASC),
-  INDEX `fk_profissionais_has_obras_profissionais1_idx` (`profissionais_idprofissionais` ASC),
-  CONSTRAINT `fk_profissionais_has_obras_profissionais1`
-    FOREIGN KEY (`profissionais_idprofissionais`)
-    REFERENCES `reformando_banco`.`profissionais` (`idprofissionais`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_profissionais_has_obras_obras1`
-    FOREIGN KEY (`obras_idobras`)
-    REFERENCES `reformando_banco`.`obras` (`idobras`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
