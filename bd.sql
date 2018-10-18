@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `reformando_banco`.`pessoas` (
   `idpessoas` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `apelido` VARCHAR(45) NULL,
-  `cpf` INT(12) NOT NULL,
+  `cpf` VARCHAR(12) NOT NULL,
   `endereco` VARCHAR(45) NOT NULL,
   `bairro` VARCHAR(45) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
