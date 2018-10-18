@@ -59,11 +59,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `reformando_banco`.`usuarios` (
   `idusuarios` INT NOT NULL AUTO_INCREMENT,
-  `login` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   `pessoas_idpessoas` INT NOT NULL,
   PRIMARY KEY (`idusuarios`),
-  UNIQUE INDEX `login_UNIQUE` (`login` ASC),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   INDEX `fk_usuarios_pessoas1_idx` (`pessoas_idpessoas` ASC),
   CONSTRAINT `fk_usuarios_pessoas1`
     FOREIGN KEY (`pessoas_idpessoas`)
